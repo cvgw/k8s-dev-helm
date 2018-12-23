@@ -2,5 +2,8 @@ dependencies:
 - name: prometheus-operator
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 1.1.0
-digest: sha256:239230cb6e8da15289dadc8a7717391207d78efd25e224c6056dda4089f7a56e
-generated: 2018-12-23T05:54:47.820297835Z
+- name: cert-manager
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: v0.5.2
+digest: sha256:858771b62370335ae63273538a4bf9e6c4484780ec704e5d23dbbee1182f7a36
+generated: 2018-12-23T17:08:41.951234145Z
