@@ -4,3 +4,27 @@ prometheus-operator:
   kubelet:
     serviceMonitor:
       https: true
+  prometheus:
+    prometheusSpec:
+      additionalScrapeConfigs:
+      - job_name: proxysql-test
+        scrape_interval: 30s
+        scrape_timeout: 10s
+        metrics_path: /metrics
+        scheme: http
+        kubernetes_sd_configs:
+        - role: endpoints
+          namespaces:
+            names:
+            - default
+        relabel_configs:
+        - source_labels: [__meta_kubernetes_service_label_project]
+          separator: ;
+          regex: zendesk-proxysql
+          replacement: $1
+          action: keep
+        - source_labels: [__meta_kubernetes_endpoint_port_name]
+          separator: ;
+          regex: reporter-stats
+          replacement: $1
+          action: keep
